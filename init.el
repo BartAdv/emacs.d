@@ -70,7 +70,8 @@
 	lisp
 	haskell
 	parens
-	complete))
+	complete
+	erlang))
 
 ;; Now load other things
 (dolist (file packages)
