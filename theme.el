@@ -17,7 +17,7 @@
   (blink-cursor-mode -1))
 
 ;; Show line numbers in buffers
-(global-linum-mode t)
+(global-linum-mode 0)
 (setq linum-format (if on-console "%4d " "%4d"))
 
 ;; Show column numbers in modeline
@@ -27,7 +27,7 @@
 ;; it off in term-mode-hook doesn't work.
 (setq linum-disabled-modes
       '(term-mode slime-repl-mode magit-status-mode help-mode nrepl-mode
-                  xwidget-webkit-mode revealjs-mode))
+                  xwidget-webkit-mode revealjs-mode erlang-shell-mode))
 (defun linum-on ()
   (unless (or (minibufferp) (member major-mode linum-disabled-modes))
     (linum-mode 1)))
@@ -111,7 +111,7 @@
 
 (theme-dark)
 
-(set-frame-font "Envy Code R-12")
+(set-frame-font "Envy Code R 11")
 
 ;; Unclutter the modeline
 (package-require 'diminish)
