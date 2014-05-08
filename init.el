@@ -71,7 +71,8 @@
 	haskell
 	parens
 	complete
-	erlang))
+	erlang
+	ffip))
 
 ;; Now load other things
 (dolist (file packages)
