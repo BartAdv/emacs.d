@@ -38,7 +38,7 @@
 
 (substitute-unicode 'clojure-mode
 		    (list (cons "(\\(\\<fn\\>\\)" 'lambda)
-			  (cons "(\\(\\<comp\\>\\)" 'composition)
+			  (cons "\\b\\(\\<comp\\>\\)\\b" 'composition)
 			  (cons "(\\(\\<apply\\>\\)" 'application)
 			  (cons "(\\(\\<partial\\>\\)" 'partial-application)
 			  (cons "\\(#\\){" 'set)
@@ -63,16 +63,20 @@
 
 (add-hook 'clojure-mode-hook
 	  (lambda () (progn
-		  (define-key clojure-mode-map (kbd "C-c j") 'cider-jack-in)
-		  (define-key clojure-mode-map (kbd "C-c b") 'spawn-chrome))))
+		  (define-key clojure-mode-map (kbd "C-c j") 'cider-jack-in))))
 
 (add-hook 'cider-mode-hook
 	  (lambda () (progn
 		  (cider-turn-on-eldoc-mode)
 		  (rebind-evil-tag-navigation cider-mode-map 'cider-jump 'cider-jump-back)
-		  (define-key cider-mode-map (kbd "C-c r") 'cider-restart)
+		  (define-key clojure-mode-map (kbd "C-c r") 'cider-switch-to-repl-buffer)
 		  (define-key cider-mode-map (kbd "C-c <RET>") 'cider-eval-buffer)
-		  (define-key cider-mode-map (kbd "C-c <SPC>") 'cider-eval-defun-at-point-or-region))))
+		  (define-key cider-mode-map (kbd "C-c <SPC>") 'cider-eval-defun-at-point-or-region)
+		  (define-key cider-mode-map (kbd "C-c n") 'cider-repl-set-ns))))
+
+(add-hook 'cider-repl-mode-hook
+	  (lambda () (progn
+		  (define-key cider-repl-mode-map (kbd "C-c r") 'cider-restart))))
 
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-mode)

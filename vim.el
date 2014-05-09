@@ -45,6 +45,7 @@
 (make-conditional-key-translation (kbd "<RET>") (kbd "M-x") 'translate-keys-p)
 (make-conditional-key-translation (kbd "TAB") (kbd "C-w") 'translate-keys-p)
 (define-key evil-normal-state-map (kbd "C-w TAB") 'other-window)
+(define-key evil-normal-state-map (kbd "C-w b") 'ido-switch-buffer)
 
 ;; Add to mode hooks when rebinding these
 (defun rebind-evil-tag-navigation (map jump jump-back)
