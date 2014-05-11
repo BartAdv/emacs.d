@@ -6,4 +6,9 @@
 
 (package-require 'ag)
 
+(defun rotators (pass)
+  (interactive "sKey: ")
+  (erc :server "pine.forestnet.org" :port 6667 :nick "BartAdv")
+  (erc-join-channel (concat "Rotators" " " pass)))
+
 (provide 'global)
