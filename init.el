@@ -69,6 +69,7 @@
 	git
 	lisp
 	haskell
+	idris
 	parens
 	complete
 	erlang
