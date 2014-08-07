@@ -31,10 +31,9 @@
   (ghc-init)
   (add-to-list 'ac-sources 'ac-source-ghc)
 
-  (define-key haskell-mode-map (kbd "C-c <RET>") 'haskell-process-load-or-reload)
+  (define-key haskell-mode-map (kbd "C-c r") 'inferior-haskell-load-file)
   (define-key haskell-mode-map (kbd "C-c i") 'ghc-show-info-popup)
-  (define-key haskell-mode-map (kbd "C-c t") 'ghc-show-type)
-  (define-key haskell-mode-map (kbd "C-c r") 'haskell-process-restart))
+  (define-key haskell-mode-map (kbd "C-c t") 'ghc-show-type))
 
 (defun haskell-cabal-hook ()
   )
