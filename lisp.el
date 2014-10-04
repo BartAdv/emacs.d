@@ -35,6 +35,7 @@
 ;;; Clojure
 (package-require 'clojure-mode)
 (add-to-list 'auto-mode-alist '("\\.cljs?$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs.hl?$" . clojure-mode))
 
 (substitute-unicode 'clojure-mode
 		    (list (cons "(\\(\\<fn\\>\\)" 'lambda)
