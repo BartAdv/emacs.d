@@ -42,10 +42,23 @@
 (define-key evil-normal-state-map (kbd "TAB") nil)
 (make-conditional-key-translation (kbd "<SPC>") (kbd "C-c") 'translate-keys-p)
 (make-conditional-key-translation (kbd "C-<SPC>") (kbd "C-x") 'translate-keys-p)
-(make-conditional-key-translation (kbd "<RET>") (kbd "M-x") 'translate-keys-p)
 (make-conditional-key-translation (kbd "TAB") (kbd "C-w") 'translate-keys-p)
 (define-key evil-normal-state-map (kbd "C-w TAB") 'other-window)
 (define-key evil-normal-state-map (kbd "C-w b") 'ido-switch-buffer)
+
+; colemak movement
+(define-key evil-normal-state-map (kbd "n") 'evil-next-line)
+(define-key evil-normal-state-map (kbd "e") 'evil-previous-line)
+(define-key evil-normal-state-map (kbd "i") 'evil-forward-char)
+
+(define-key evil-visual-state-map (kbd "n") 'evil-next-line)
+(define-key evil-visual-state-map (kbd "e") 'evil-previous-line)
+(define-key evil-visual-state-map (kbd "i") 'evil-forward-char)
+
+(define-key evil-normal-state-map (kbd "j") 'evil-search-backward)
+(define-key evil-normal-state-map (kbd "k") 'evil-search-forward)
+
+(define-key evil-normal-state-map (kbd "<RET>") 'evil-insert)
 
 ;; Add to mode hooks when rebinding these
 (defun rebind-evil-tag-navigation (map jump jump-back)
