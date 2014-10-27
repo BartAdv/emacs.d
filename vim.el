@@ -17,6 +17,7 @@
 (move-key evil-motion-state-map evil-normal-state-map (kbd "<SPC>"))
 (move-key evil-motion-state-map evil-normal-state-map (kbd "<RET>"))
 (move-key evil-motion-state-map evil-normal-state-map (kbd "TAB"))
+(move-key evil-motion-state-map evil-normal-state-map (kbd "DEL"))
 
 ;; Note: lexical-binding must be t in order for this to work correctly.
 (defun make-conditional-key-translation (key-from key-to translate-keys-p)
@@ -40,23 +41,42 @@
 (define-key evil-normal-state-map (kbd "<SPC>") nil)
 (define-key evil-normal-state-map (kbd "<RET>") nil)
 (define-key evil-normal-state-map (kbd "TAB") nil)
+(define-key evil-normal-state-map (kbd "DEL") nil)
+
 (make-conditional-key-translation (kbd "<SPC>") (kbd "C-c") 'translate-keys-p)
 (make-conditional-key-translation (kbd "C-<SPC>") (kbd "C-x") 'translate-keys-p)
 (make-conditional-key-translation (kbd "TAB") (kbd "C-w") 'translate-keys-p)
+(make-conditional-key-translation (kbd "DEL") (kbd "C-x") 'translate-keys-p)
+
 (define-key evil-normal-state-map (kbd "C-w TAB") 'other-window)
 (define-key evil-normal-state-map (kbd "C-w b") 'ido-switch-buffer)
 
 ; colemak movement
-(define-key evil-normal-state-map (kbd "n") 'evil-next-line)
-(define-key evil-normal-state-map (kbd "e") 'evil-previous-line)
-(define-key evil-normal-state-map (kbd "i") 'evil-forward-char)
+(defun vim-colemak ()
+  (interactive)
+  (define-key evil-normal-state-map (kbd "n") 'evil-next-line)
+  (define-key evil-normal-state-map (kbd "e") 'evil-previous-line)
+  (define-key evil-normal-state-map (kbd "i") 'evil-forward-char)
 
-(define-key evil-visual-state-map (kbd "n") 'evil-next-line)
-(define-key evil-visual-state-map (kbd "e") 'evil-previous-line)
-(define-key evil-visual-state-map (kbd "i") 'evil-forward-char)
+  (define-key evil-visual-state-map (kbd "n") 'evil-next-line)
+  (define-key evil-visual-state-map (kbd "e") 'evil-previous-line)
+  (define-key evil-visual-state-map (kbd "i") 'evil-forward-char)
 
-(define-key evil-normal-state-map (kbd "j") 'evil-search-backward)
-(define-key evil-normal-state-map (kbd "k") 'evil-search-forward)
+  (define-key evil-normal-state-map (kbd "j") 'evil-search-backward)
+  (define-key evil-normal-state-map (kbd "k") 'evil-search-forward))
+
+(defun vim-qwerty ()
+  (interactive)
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-line)
+  (define-key evil-normal-state-map (kbd "l") 'evil-forward-char)
+
+  (define-key evil-visual-state-map (kbd "j") 'evil-next-line)
+  (define-key evil-visual-state-map (kbd "k") 'evil-previous-line)
+  (define-key evil-visual-state-map (kbd "l") 'evil-forward-char)
+
+  (define-key evil-normal-state-map (kbd "N") 'evil-search-backward)
+  (define-key evil-normal-state-map (kbd "n") 'evil-search-forward))
 
 (define-key evil-normal-state-map (kbd "<RET>") 'evil-insert)
 
