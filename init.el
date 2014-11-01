@@ -73,6 +73,7 @@
 	parens
 	complete
 	;erlang
+	arduino
 	ffip))
 
 ;; Now load other things
