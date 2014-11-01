@@ -72,7 +72,7 @@
 	idris
 	parens
 	complete
-	erlang
+	;erlang
 	ffip))
 
 ;; Now load other things

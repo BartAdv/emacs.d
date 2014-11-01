@@ -46,7 +46,9 @@
 (make-conditional-key-translation (kbd "<SPC>") (kbd "C-c") 'translate-keys-p)
 (make-conditional-key-translation (kbd "C-<SPC>") (kbd "C-x") 'translate-keys-p)
 (make-conditional-key-translation (kbd "TAB") (kbd "C-w") 'translate-keys-p)
-(make-conditional-key-translation (kbd "DEL") (kbd "C-x") 'translate-keys-p)
+
+; BS in normal mode => C-x
+(define-key evil-normal-state-map (kbd "DEL") 'execute-extended-command)
 
 (define-key evil-normal-state-map (kbd "C-w TAB") 'other-window)
 (define-key evil-normal-state-map (kbd "C-w b") 'ido-switch-buffer)

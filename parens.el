@@ -3,7 +3,8 @@
 ;; Paredit for all lisps
 (package-require 'paredit)
 (add-lisp-hook (lambda ()
-                 (paredit-mode 1)))
+                 (paredit-mode 1)
+		 (define-key paredit-mode-map (kbd "C-i") 'paredit-forward-slurp-sexp)))
 
 ;; Make paredit play nice with eldoc
 (eval-after-load "eldoc"
